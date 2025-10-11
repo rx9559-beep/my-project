@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saudi Events - Discover Amazing Events</title>
+    <meta name="description" content="Discover and book tourism events across Saudi Arabia">
+    <meta name="keywords" content="Saudi Arabia, events, tourism, cultural, food, nature, adventure">
+    <meta name="author" content="Saudi Events">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="slider-styles.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta property="og:title" content="Saudi Events - Discover Amazing Events">
+    <meta property="og:description" content="Discover and book tourism events across Saudi Arabia">
+    <meta property="og:image" content="images/og-image.jpg">
+    <meta property="og:url" content="https://saudievents.com">
+</head>
+<body>
+
+
+    <header class="sticky-header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Saudi Events</span>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#home" class="active" aria-current="page"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#events"><i class="fas fa-calendar"></i> Events</a></li>
+                    <li><a href="#categories"><i class="fas fa-tags"></i> Categories</a></li>
+                    <li><a href="#popular"><i class="fas fa-star"></i> Popular</a></li>
+                    <li><a href="/smallfiles/sml/profile.html"><i class="fas fa-users"></i> profile</a></li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle"><i class="fas fa-info-circle"></i> About <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/smallfiles/sml/about.html">About Us</a></li>
+                            <li><a href="/smallfiles/sml/contact.html">Contact</a></li>
+                            <li><a href="/smallfiles/sml/faq.html">FAQ</a></li>
+                           
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Discover Amazing Events Across Saudi Arabia</h1>
+                <p>Find cultural, food, nature, and adventure events in the Kingdom</p>
+                <div class="hero-buttons">
+                    <a href="#events" class="btn btn-primary"><i class="fas fa-calendar"></i> Browse Events</a>
+                    <a href="#categories" class="btn btn-outline"><i class="fas fa-tags"></i> Explore Categories</a>
+                </div>
+                <div class="search-container">
+                    <div class="search-bar">
+                        <input type="text" id="search-input" placeholder="Search events..." aria-label="Search events">
+                        <select id="location-filter" aria-label="Filter by location">
+                            <option value="">All Locations</option>
+                            <option value="riyadh">Riyadh</option>
+                            <option value="jeddah">Jeddah</option>
+                            <option value="dammam">Dammam</option>
+                            <option value="alula">AlUla</option>
+                            <option value="taif">Taif</option>
+                            <option value="abha">Abha</option>
+                        </select>
+                        <select id="category-filter" aria-label="Filter by category">
+                            <option value="">All Categories</option>
+                            <option value="cultural">Cultural</option>
+                            <option value="food">Food</option>
+                            <option value="nature">Nature</option>
+                            <option value="adventure">Adventure</option>
+                            <option value="family">Family</option>
+                            <option value="sports">Sports</option>
+                        </select>
+                        <select id="date-filter" aria-label="Filter by date">
+                            <option value="">Any Date</option>
+                            <option value="today">Today</option>
+                            <option value="tomorrow">Tomorrow</option>
+                            <option value="weekend">This Weekend</option>
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                        </select>
+                        <button id="search-btn" class="btn btn-primary"><i class="fas fa-search"></i> Search</button>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-text">Events</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">20+</span>
+                    <span class="stat-text">Cities</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100k+</span>
+                    <span class="stat-text">Visitors</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="events" class="featured-events">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Featured Events</h2>
+                    <div class="filter-controls">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="cultural">Cultural</button>
+                        <button class="filter-btn" data-filter="food">Food</button>
+                        <button class="filter-btn" data-filter="nature">Nature</button>
+                        <button class="filter-btn" data-filter="adventure">Adventure</button>
+                    </div>
+                    <div class="view-all">
+                        <a href="#" id="view-all-events">View All <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="events-grid" id="events-container">
+                    <div class="loading-events">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Loading events...</p>
+                    </div>
+                </div>
+                <div class="pagination" id="pagination">
+                </div>
+            </div>
+        </section>
+
+        <section id="popular" class="popular-cities">
+            <div class="container">
+                <h2>Explore Events By City</h2>
+                <div class="cities-slider">
+                    <div class="city-card" data-city="riyadh">
+                        <img src="https://imgs.search.brave.com/GFO2wuyoqsiULVmeZZ2GyoNPh4KDzVuWedLFqvXyMN0/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTQ0/OTg2OTQ3Ni9waG90/by9yaXlhZGgtc2t5/bGluZS5qcGc_cz02/MTJ4NjEyJnc9MCZr/PTIwJmM9Vy1hSEtQ/OTU5QU9qbDF6dWhW/LTZnM25NVHI0VHBs/eHoxUjhpR0ZaaWtf/Zz0" alt="Riyadh skyline">
+                        <div class="city-card-content">
+                            <h3>Riyadh</h3>
+                            <p>75 Events</p>
+                            <a href="#" class="btn btn-sm explore-city" data-city="riyadh">Explore</a>
+                        </div>
+                    </div>
+                    <div class="city-card" data-city="dammam">
+                        <img src="https://imgs.search.brave.com/w1AI0-ienjwJrW1Sf0SksVS7smYKcCpuEI7M5TUUNM8/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9ibG9n/Lndhc2FsdC5zYS9l/bi93cC1jb250ZW50/L3VwbG9hZHMvMjAy/NC8wOS9EYW1tYW0t/Q29ybmljaGUtMi03/NTB4NTM2LmpwZw" alt="Dammam corniche">
+                        <div class="city-card-content">
+                            <h3>Dammam</h3>
+                            <p>38 Events</p>
+                            <a href="#" class="btn btn-sm explore-city" data-city="dammam">Explore</a>
+                        </div>
+                    </div>
+                    <div class="city-card" data-city="alula">
+                        <img src="https://imgs.search.brave.com/t8qMUBRaGFeWEOiZ2Gu_Ta9hbqpn5loVIRMmCHuEwtE/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/dHJhdmVsYW5kbGVp/c3VyZS5jb20vdGht/Yi9DWS1QYkNkN3Ra/VmNCQ1NXZUkyOGxR/bWI0UEE9LzE1MDB4/MC9maWx0ZXJzOm5v/X3Vwc2NhbGUoKTpt/YXhfYnl0ZXMoMTUw/MDAwKTpzdHJpcF9p/Y2MoKS9UQUwtYmFu/eWFuLXRyZWUtYWx1/bGEtQUxVTEFTQTA5/MjQtM2E2NGRiMWUy/MTYzNDkzM2JkYzk4/NTVhOTlmM2FmMTAu/anBn" alt="AlUla landscape">
+                        <div class="city-card-content">
+                            <h3>AlUla</h3>
+                            <p>42 Events</p>
+                            <a href="#" class="btn btn-sm explore-city" data-city="alula">Explore</a>
+                        </div>
+                    </div>
+                    <div class="city-card" data-city="jeddah">
+                        <img src="https://imgs.search.brave.com/7e-mvxAuqohvBsOHPdv7gk9WrRESr5ZYQIlRDgCTNrc/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTk4/NzIxODI2Ni9waG90/by93YXRlcmZyb250/LWJ1aWxkaW5ncy1p/bi10aGUtY2l0eS1v/Zi1qZWRkYWguanBn/P3M9NjEyeDYxMiZ3/PTAmaz0yMCZjPWx4/VWxOZlhaTkFVWDhl/SEsxZ3dhMU9RTFVh/ZzBjT0xHaTFTVGla/amFHT1k9" alt="Jeddah waterfront">
+                        <div class="city-card-content">
+                            <h3>Jeddah</h3>
+                            <p>63 Events</p>
+                            <a href="#" class="btn btn-sm explore-city" data-city="jeddah">Explore</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button class="slider-arrow prev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="slider-dots">
+                        <!-- Dots will be dynamically generated by JavaScript -->
+                    </div>
+                    <button class="slider-arrow next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <section id="categories" class="categories">
+            <div class="container">
+                <h2>Browse by Category</h2>
+                <div class="category-grid">
+                    <div class="category-card" data-category="cultural">
+                        <div class="category-icon">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <h3>Cultural</h3>
+                        <p>Explore Saudi heritage and traditions</p>
+                        <span class="event-count">42 Events</span>
+                        <a href="#" class="category-link">Browse<i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="category-card" data-category="food">
+                        <div class="category-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3>Food</h3>
+                        <p>Taste authentic Saudi cuisine</p>
+                        <span class="event-count">38 Events</span>
+                        <a href="#" class="category-link">Browse<i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="category-card" data-category="nature">
+                        <div class="category-icon">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <h3>Nature</h3>
+                        <p>Discover Saudi's natural beauty</p>
+                        <span class="event-count">27 Events</span>
+                        <a href="#" class="category-link">Browse<i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="category-card" data-category="adventure">
+                        <div class="category-icon">
+                            <i class="fas fa-hiking"></i>
+                        </div>
+                        <h3>Adventure</h3>
+                        <p>Thrilling outdoor activities</p>
+                        <span class="event-count">35 Events</span>
+                        <a href="#" class="category-link">Browse<i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="category-card" data-category="family">
+                        <div class="category-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Family</h3>
+                        <p>Fun activities for the whole family</p>
+                        <span class="event-count">45 Events</span>
+                        <a href="#" class="category-link">Browse<i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="category-card" data-category="sports">
+                        <div class="category-icon">
+                            <i class="fas fa-futbol"></i>
+                        </div>
+                        <h3>Sports</h3>
+                        <p>Sports events and activities</p>
+                        <span class="event-count">33 Events</span>
+                        <a href="#" class="category-link">Browse<i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       
+        <section class="testimonials">
+            <div class="container">
+                <h2>What Our Users Say</h2>
+                <div class="testimonials-slider">
+                    <!-- First Group -->
+                    <div class="testimonial-group">
+                        <div class="testimonial-card" style="color: #2c3e50;">
+                            <div class="testimonial-image">
+                                <img src="https://imgs.search.brave.com/Zax-FX1IQbkfuSxm2_iYWpKIoGzJZ_aEY6pc4ziwNDk/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTM5/MDk5NDM4Ny9waG90/by9oZWFkc2hvdC1v/Zi1iZWFyZGVkLXNh/dWRpLW1hbi1pbi10/cmFkaXRpb25hbC1h/dHRpcmUuanBnP3M9/NjEyeDYxMiZ3PTAm/az0yMCZjPTRmcDdy/b1NheE9QMW9TcTNp/Z2hPaXl5WWJod1Nv/eTF0RHZ5WlJqRGhV/ZW89" alt="User avatar">
+                            </div>
+                            <div class="testimonial-content">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p>"Saudi Events made planning my trip to Riyadh so much easier! I discovered cultural events I wouldn't have found otherwise."</p>
+                                <div class="testimonial-author">
+                                    <h4>Ahmed K.</h4>
+                                    <span>Jeddah</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-card" style="color: #e74c3c;">
+                            <div class="testimonial-image">
+                                <img src="https://imgs.search.brave.com/vHbhJ7_aeoII1X6r1Z4zqBx-yDNNDvfPCTh7Wbv_5D4/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAxLzk1LzcyLzA1/LzM2MF9GXzE5NTcy/MDUyMV8wQkhsUUxI/S25yRmJiRlpMWU5s/T2NqRHByYjRyVlZC/TS5qcGc" alt="User avatar">
+                            </div>
+                            <div class="testimonial-content">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <p>"The AlUla Desert Tour was the highlight of my visit. Booking through Saudi Events was simple and hassle-free."</p>
+                                <div class="testimonial-author">
+                                    <h4>Saud N.</h4>
+                                    <span>Dubai</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-card" style="color: #27ae60;">
+                            <div class="testimonial-image">
+                                <img src="https://imgs.search.brave.com/Qz2gtp0zteALJFw7E_HEMGgCHpjhhU9MLVrDT91JIZ4/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzA5Lzc2Lzc5Lzc0/LzM2MF9GXzk3Njc5/NzQyOF80NmhvMDRZ/Wmx2YXV3S1JYcmQz/Z1lRWWVSNDB5cUVv/eS5qcGc" alt="User avatar">
+                            </div>
+                            <div class="testimonial-content">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p>"As a local, I'm always looking for new things to do in Jeddah. This platform has introduced me to amazing food festivals I didn't know about!"</p>
+                                <div class="testimonial-author">
+                                    <h4>Basil A.</h4>
+                                    <span>Jeddah</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Second Group -->
+                    <div class="testimonial-group">
+                        <div class="testimonial-card" style="color: #8e44ad;">
+                            <div class="testimonial-image">
+                                <img src="https://imgs.search.brave.com/Qz2gtp0zteALJFw7E_HEMGgCHpjhhU9MLVrDT91JIZ4/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzA5Lzc2Lzc5Lzc0/LzM2MF9GXzk3Njc5/NzQyOF80NmhvMDRZ/Wmx2YXV3S1JYcmQz/Z1lRWWVSNDB5cUVv/eS5qcGc" alt="User avatar">
+                            </div>
+                            <div class="testimonial-content">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p>"The cultural events in Riyadh were amazing! I learned so much about Saudi traditions and history."</p>
+                                <div class="testimonial-author">
+                                    <h4>Rami M.</h4>
+                                    <span>Abha</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-card" style="color: #d35400;">
+                            <div class="testimonial-image">
+                                <img src="https://imgs.search.brave.com/Qz2gtp0zteALJFw7E_HEMGgCHpjhhU9MLVrDT91JIZ4/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzA5Lzc2Lzc5Lzc0/LzM2MF9GXzk3Njc5/NzQyOF80NmhvMDRZ/Wmx2YXV3S1JYcmQz/Z1lRWWVSNDB5cUVv/eS5qcGc" alt="User avatar">
+                            </div>
+                            <div class="testimonial-content">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p>"The food festivals in Jeddah were incredible! I got to taste authentic Saudi cuisine and meet amazing chefs."</p>
+                                <div class="testimonial-author">
+                                    <h4>Mohammed R.</h4>
+                                    <span>Riyadh</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-card" style="color: #2980b9;">
+                            <div class="testimonial-image">
+                                <img src="https://imgs.search.brave.com/Qz2gtp0zteALJFw7E_HEMGgCHpjhhU9MLVrDT91JIZ4/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzA5Lzc2Lzc5Lzc0/LzM2MF9GXzk3Njc5/NzQyOF80NmhvMDRZ/Wmx2YXV3S1JYcmQz/Z1lRWWVSNDB5cUVv/eS5qcGc" alt="User avatar">
+                            </div>
+                            <div class="testimonial-content">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <p>"The adventure tours in AlUla were breathtaking! The booking process was smooth and the guides were very knowledgeable."</p>
+                                <div class="testimonial-author">
+                                    <h4>Fatima S.</h4>
+                                    <span>Dammam</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button class="slider-arrow prev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <button class="slider-arrow next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+   
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Saudi Events</h3>
+                    <p>Discover and book the best tourism events across Saudi Arabia.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Discover</h3>
+                    <ul>
+                        <li><a href="#events">Events</a></li>
+                        <li><a href="#categories">Categories</a></li>
+                        <li><a href="#popular">Cities</a></li>
+                        <li><a href="#">Upcoming</a></li>
+                        <li><a href="#">Featured</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="/smallfiles/sml/about.html">About Us</a></li>
+                        <li><a href="/smallfiles/sml/team.html">Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="/smallfiles/sml/faq.html">FAQs</a></li>
+                        <li><a href="/smallfiles/sml/contact.html">Contact Us</a></li>
+                        <li><a href="/smallfiles/sml/terms.html">Terms of Service</a></li>
+                        <li><a href="/smallfiles/sml/privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Riyadh, Saudi Arabia</li>
+                        <li><i class="fas fa-phone"></i> +966 12 345 6789</li>
+                        <li><i class="fas fa-envelope"></i> info@saudievents.com</li>
+                        <li><i class="fas fa-clock"></i> 9AM-6PM, Sun-Thu</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Saudi Events. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="/smallfiles/sml/privacy.html">Privacy Policy</a>
+                    <a href="/smallfiles/sml/terms.html">Terms of Service</a>
+
+                </div>
+                <div class="language-selector">
+                    <select id="language-selector" aria-label="Select language">
+                        <option value="en">English</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+   
+
+    <div class="modal" id="event-modal" aria-labelledby="event-heading" aria-modal="true" role="dialog">
+        <div class="modal-content event-modal-content">
+            <span class="close" aria-label="Close">&times;</span>
+            <div id="event-details">
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true"></div>
+
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <div id="cookie-consent" class="cookie-consent">
+        <div class="cookie-content">
+            <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.</p>
+            <div class="cookie-buttons">
+                <button id="cookie-accept" class="btn btn-sm">Accept</button>
+                <button id="cookie-settings" class="btn btn-sm btn-outline">Settings</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="slider.js"></script>
+    <script>
+        // Function to handle event clicks
+        function handleEventClick(eventDetails) {
+            const params = new URLSearchParams({
+                event: eventDetails.name,
+                date: eventDetails.date,
+                time: eventDetails.time,
+                price: eventDetails.price,
+                location: eventDetails.location,
+                image: eventDetails.image
+            });
+            window.location.href = `reservation.html?${params.toString()}`;
+        }
+
+        // Add click handlers to event cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const eventCards = document.querySelectorAll('.event-card');
+            eventCards.forEach(card => {
+                const bookNowBtn = document.createElement('a');
+                bookNowBtn.className = 'btn btn-primary book-now-btn';
+                bookNowBtn.href = 'reservation.html';
+                bookNowBtn.innerHTML = '<i class="fas fa-ticket-alt"></i> Book Now';
+                card.appendChild(bookNowBtn);
+            });
+        });
+
+        // Update profile link in navigation
+        const profileLink = document.querySelector('a[href="/smallfiles/sml/profile.html"]');
+        if (profileLink) {
+            const userEmail = localStorage.getItem('userEmail');
+            if (userEmail) {
+                const userType = localStorage.getItem('userType');
+                if (userType === 'organization') {
+                    const orgName = localStorage.getItem('orgName');
+                    profileLink.innerHTML = `<i class="fas fa-building"></i> ${orgName}`;
+                    profileLink.href = 'org.html'; // Link to organization profile
+                } else {
+                    const savedProfile = localStorage.getItem('userProfile');
+                    if (savedProfile) {
+                        const profile = JSON.parse(savedProfile);
+                        profileLink.innerHTML = `<i class="fas fa-user"></i> ${profile.fullName || userEmail.split('@')[0]}`;
+                    } else {
+                        profileLink.innerHTML = `<i class="fas fa-user"></i> ${userEmail.split('@')[0]}`;
+                    }
+                    profileLink.href = 'profile.html'; // Link to user profile
+                }
+            }
+        }
+    </script>
+</body>
+</html>
